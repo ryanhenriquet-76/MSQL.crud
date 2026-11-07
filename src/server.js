@@ -45,12 +45,11 @@ app.put('/user/:id', async (req, res) => {
    const { id } = req.params;
    const { nome, email} = req.body;
    
-   const [result] = await pool.querry(UPDATE users, SET nome = ? email = ?, WRERE id = ? [nome, email, id])
+   const [result] = await pool.query('UPDATE users SET name = ? email = ? WRERE id', [nome,email])
 
 
    res.status(200).json({
     msg: 'usuario atulizado com sucesso'
-    data: result
    })
 })
 
